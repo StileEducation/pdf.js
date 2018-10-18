@@ -1247,7 +1247,10 @@ function validateFileURL(file) {
     // start accepting URLs from foreign origin -- CORS headers on the remote
     // server must be properly configured.
     if (fileOrigin !== viewerOrigin) {
-      throw new Error('file origin does not match viewer\'s');
+        // STILE HACKS
+        // We already use CORS, this isn't necessary and it breaks preprod and
+        // serving web separately to API in a dev environment.
+        // throw new Error('file origin does not match viewer\'s');
     }
   } catch (e) {
     var message = e && e.message;
